@@ -12,6 +12,8 @@ app.set('views', require('path').join(__dirname, '/views'));
 app.use(ejsLayouts);
 // support for form submitted values
 app.use(bodyParser.urlencoded({ extended: true }));
+// setup a folder for the static files
+app.use(express.static('assets'));
 
 var CHOICES = {
   'happy'        : 'Happy',
