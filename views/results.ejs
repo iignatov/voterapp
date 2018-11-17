@@ -1,5 +1,5 @@
 <table class='table table-hover table-striped'>
-  <% for (let [place_id, place_name] of Object.entries(CHOICES)) { %>
+  <% for (let [place_id, place_name] of Object.keys(CHOICES).map(x => [x, CHOICES[x]])) { %>
     <tr>
       <th><%= place_name %></th>
       <td><%= votes[place_id] || 0 %></td>

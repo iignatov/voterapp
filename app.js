@@ -23,8 +23,6 @@ var CHOICES = {
   'soul-kitchen' : 'Soul Kitchen',
 };
 
-votes = {}
-
 app.get('/', function(req, res) {
   var data = {
     CHOICES: CHOICES,
@@ -57,7 +55,8 @@ app.post('/cast', function(req, res) {
 app.get('/results', function(req, res) {
   var data = {
     CHOICES: CHOICES,
-    title: 'Резултатите до сега:'
+    title: 'Резултатите до сега:',
+    votes: {}
   };
   var store = new YamlStore('votes.yml');
   store.transaction(function() {
@@ -66,6 +65,6 @@ app.get('/results', function(req, res) {
   res.render('results', data);
 });
 
-app.listen(8080);
+app.listen(process.env.PORT, '0.0.0.0');
 
-console.log('Server running at: http://localhost:8080...');
+console.log('Server running at: http://0.0.0.0:' + process.env.PORT + '...');

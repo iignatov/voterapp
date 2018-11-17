@@ -1,7 +1,7 @@
     <p>Къде да обядваме?</p>
     <form action='cast' method='post'>
       <ul class='unstyled'>
-        <% for (let [place_id, place_name] of Object.entries(CHOICES)) { %>
+        <% for (let [place_id, place_name] of Object.keys(CHOICES).map(x => [x, CHOICES[x]])) { %>
           <li>
             <label class='radio'>
               <input type='radio' name='vote' value='<%= place_id %>' id='vote_<%= place_id %>' />
