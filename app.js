@@ -1,19 +1,5 @@
-var bodyParser = require('body-parser');
-var express = require('express');
-var ejsLayouts = require('express-ejs-layouts');
 var YamlStore = require('./store');
-var app = express();
-
-// set the view engine to ejs
-app.set('view engine', 'ejs');
-// set the default path for views
-app.set('views', require('path').join(__dirname, '/views'));
-// support for EJS layouts
-app.use(ejsLayouts);
-// support for form submitted values
-app.use(bodyParser.urlencoded({ extended: true }));
-// setup a folder for the static files
-app.use(express.static('assets'));
+var app = require('./webapp');
 
 var CHOICES = {
   'happy'        : 'Happy',
@@ -67,6 +53,4 @@ app.get('/results', function(req, res) {
   res.render('results', data);
 });
 
-app.listen(process.env.PORT, '0.0.0.0');
-
-console.log('Server running at: http://0.0.0.0:' + process.env.PORT + '...');
+app.start(process.env.PORT, '0.0.0.0');
