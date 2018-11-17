@@ -1,2 +1,5 @@
-# Do not store the votes count file in the repository
+# Do not store the node packages.
+node_modules
+
+# Do not store the votes count file in the repository.
 votes.yml
